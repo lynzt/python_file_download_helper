@@ -17,9 +17,13 @@ class UtilsTests(unittest.TestCase):
         download_helper.delete_file(filename)
         self.assertFalse(download_helper.file_exists(filename))
 
-    def test_get_extension_from_uri(self):
+    def test_get_file_extension(self):
         uri = "https://yt3.ggpht.com/-p-K2HbhiCfE/AAAAAAAAAAI/AAAAAAAAAAA/k4V1tvBNygo/s100-c-k-no-mo-rj-c0xffffff/photo.jpg"
-        ext = download_helper.get_extension_from_uri(uri)
+        ext = download_helper.get_file_extension(uri)
         self.assertEqual(ext, '.jpg')
+
+        filename = "a_file.csv"
+        ext = download_helper.get_file_extension(filename)
+        self.assertEqual(ext, '.csv')
 
 # python -m unittest discover -s tests -p "*_tests.py"
