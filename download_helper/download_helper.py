@@ -1,4 +1,3 @@
-import urllib
 import urllib2
 import os
 from urlparse import urlparse
