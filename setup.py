@@ -6,7 +6,4 @@ setup(name='python_file_download_helper',
       author='lynzt',
       url='https://github.com/lynzt/python_file_download_helper',
       packages=['download_helper'],
-      install_requires=[
-          'shutil',
-      ],
      )
