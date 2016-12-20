@@ -1,18 +1,17 @@
-import urllib2
 import os
-from urlparse import urlparse
+import urllib
+import utils
+import shutil
 
 def download_file_from_uri(uri, filename):
-    u = urllib2.urlopen(uri)
-    localFile = open(filename, 'w')
-    localFile.write(u.read())
-    localFile.close()
+    with urllib.request.urlopen(uri) as response, open(filename, 'wb') as target:
+        shutil.copyfileobj(response, target)
 
 def delete_file(filename):
     os.remove(filename)
 
 def get_file_details(file): # pass in filename or uri
-    url_parsed = urlparse(file)
+    url_parsed = utils.parse_url_string(file)
     filename, ext = os.path.splitext(url_parsed.path)
     return {'filename': filename, 'extension': ext}
 
